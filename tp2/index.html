@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>TP2</title>
+    <title><TP2-ZOUALI></TP2-ZOUALI></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -19,6 +19,49 @@
         margin: 0 auto;
         max-width: 800px;
       }
+
+      label {
+        width: 150px;
+        display: inline-block;
+      } 
+      input:not([type="submit"]) {
+        width: 250px;
+        padding: 6px 12px;
+        border-radius: 5px;
+        border: 1px solid gray;
+        font-size: 1rem;
+        box-sizing: border-box;
+        margin-top: 20px;
+        
+      }
+      .btn-primary {
+        width: 250px;
+        padding: 6px 12px;
+        border-radius: 5px;
+        border: 1px solid rgb(74, 157, 220);
+        font-size: 1rem;
+        box-sizing: border-box; 
+        margin-top: 20px;
+      }
+form:invalid input[type="submit"] {
+  background-color: rgb(79, 158, 237);
+}
+
+form{
+  box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+input:invalid + .icon-ok {
+  display: none;
+}
+
+input:valid + .icon-ok {
+  display: inline-block;
+}
+
     </style>
 
     <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
@@ -26,9 +69,39 @@
     <!--<script src="js/main.js"></script>-->
   </head>
   <body>
-    <h1>tp2</h1>
+    <h1>TP2-ZOUALI</h1>
     <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
+    <form action="action.html" method="get"> 
+      <div>
+      <label for="name" >Nom </label>
+      <input type="text" name="name" id="name" minlength="2" maxlength="20" required>
+      <span class="icon-ok">✔</span>
+      </div>
+      <div>
+      <label for="firstname" >Prénom </label>
+      <input type="text" name="firstname"  id="firstname" minlength="2" maxlength="20" required>
+      <span class="icon-ok">✔</span>  
+    </div>
+      <div>
+        <label for="birthday" >Date de naissance </label>
+        <input type="date" name="birthday"  id="birthday" required>
+        <span class="icon-ok">✔</span>
+      </div>
+      
+      <div>
+        <label for="address" >Adresse </label>
+        <input type="text" name="address"  id="address" minlength="2" maxlength="20" required>
+        <span class="icon-ok">✔</span>
+      </div>
+      <div>
+        <label for="email" >Email </label>
+        <input type="email" name="email"  id="email" minlength="2" maxlength="20" required>
+        <span class="icon-ok">✔</span>
+      </div>
+      <label for=""></label>
+            <input type="submit" class="btn-primary" class="bb">
+      
+      </form>
+
   </body>
 </html>
