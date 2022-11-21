@@ -1,33 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP3</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/formulaire.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
-    </head>
-    <body>        
-        <h1>tp3</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
-    </body>
+  <script src="js/form-validation.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <title>TP3</title>
+</head>
+
+<body>
+  <center>
+    <h1 style="color:white;">Formulaire:</h1>
+  </center>
+  <div class="container">
+    <form id="formAW" name="form">
+      <div class="row">
+
+        <p>
+          <div class="col">
+            <label class="form-label" for="nom">Nom</label> :
+          </div>
+          <div class="col">
+            <input type="text" class="form-control inputAW" name="nom" id="nom" placeholder="Ex : ZOUALI" size="30"
+              minlength="5" pattern="[a-zA-Z]+" maxlength="20" class="inputAW" />
+          </div>
+        </p>
+      </div>
+
+      <div class="row">
+
+        <p>
+          <div class="col">
+
+            <label class="form-label" for="prenom">Prénom</label> :
+          </div>
+          <div class="col">
+
+            <input type="text" class="form-control inputAW" name="prenom" id="prenom" placeholder="Ex : Adel"
+              size="30" minlength="5" maxlength="20" class="inputAW" />
+          </div>
+
+        </p>
+      </div>
+      <div class="row">
+
+        <p>
+          <div class="col">
+
+            <label for="date">Date de naissance</label> :
+          </div>
+          <div class="col">
+
+            <input type="date" name="date" id="date" placeholer="JJ/MM/AAAA" class="form-control inputAW" />
+          </div>
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p>
+            <label class="form-label" for="adresse">Adresse</label> :
+        </div>
+        <div class="col">
+          <input type="text" name="adresse" id="adresse" size="30" minlength="5" maxlength="50"
+            class="form-control inputAW" />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>
+            <label class="form-label" for="mail">Mail</label> :
+        </div>
+        <div class="col">
+          <input type="email" name="mail" id="mail" placeholder="Ex : exemple@gmail.fr" size="30" minlength="4"
+            maxlength="30" class="form-control inputAW" />
+          </p>
+        </div>
+      </div>
+      <br />
+      <input type="submit" class="btn btn-light" value="Valider" id="submit">
+
+    </form>
+
+
+  </div>
+  <div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="modal-title" class="modal-title">Erreur dans le formulaire:</h5>
+
+        </div>
+        <div id="modal-body" class="modal-body">
+          <p id="modal-error-msg"></p>
+          <p id="modal-core-msg"></p>
+          <div id="error"></div>
+          <br />
+          <div id="resultat"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-close" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  </script>
+</body>
+
 </html>
