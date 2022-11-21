@@ -115,7 +115,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
         return re.test(String(email).toLowerCase());
       }
 
-
-
-
 })
