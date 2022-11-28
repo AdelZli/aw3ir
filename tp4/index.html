@@ -1,33 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP4</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Contacts</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/formulaire.css" />
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
-    </head>
-    <body>        
-        <h1>TP4</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
-    </body>
+    <script src="js/bootstrap.bundle.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <center> <h4> TP4 AW - Ajouter un contact </h4> </center>
+      <!-- Add your site or application content here -->
+
+      <form id="formAW">
+        <div class="form-row">
+          <div class="form-group col-2">
+            <label for="name">Nom</label>
+          </div>
+          <div class="form-group col">
+            <input
+              type="text"
+              class="form-control inputAW"
+              placeholder=""
+              name="Nom"
+              id="name"
+              onkeyup="calcNbChar(this.id)"
+            />
+            <span id="namelength">0</span> car.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-2">
+            <label for="firstname">Prénom</label>
+          </div>
+          <div class="form-group col">
+            <input
+              type="text"
+              name="Prenom"
+              class="form-control inputAW"
+              placeholder=""
+              id="firstname"
+              onkeyup="calcNbChar(this.id)"
+            />
+
+            <span id="firstnamelength">0</span> car.
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date de naissance</label>
+          </div>
+          <div class="form-group col">
+            <input type="date" class="form-control" placeholder="" id="date" />
+          </div>
+          <div class="form-group col-1"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-2">
+            <label for="adresse">Adresse</label>
+          </div>
+          <div class="form-group col">
+            <input
+              type="text"
+              class="form-control inputAW"
+              placeholder=""
+              id="adresse"
+              name="Adresse Postale"
+              style="width: 380px; position:absolute;"
+              
+            />
+         
+            <button class="btn btn-warning" type="button" id="gps" style="margin-left: 400px;  margin-top:0px;"> 
+
+             📍 GPS
+            </button> <br>
+          </div> 
+        </div> 
+
+
+           <div id="map">
+              <!--  image Google Map à mettre à jour -->
+              <img
+                alt="map"
+                width="300"
+                src="https://maps.googleapis.com/maps/api/staticmap?markers=latitude,longitude&zoom=14&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg"
+              />
+            </div>
+        <div class="form-row">
+          <div class="form-group col-2">
+            <label for="mail">Mail</label>
+          </div>
+          <div class="form-group col">
+            <input
+              type="email"
+              name="mail"
+              id="mail"
+              placeholder="Ex : exemple@mail.fr"
+              size="30"
+              minlength="5"
+              maxlength="30"
+              class="form-control inputAW"
+              onkeyup="calcNbChar(this.id)"
+            />
+            <span id="Maillength">0</span> car.
+          </div>
+          <div class="form-group col-1"></div>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group col">
+            <input
+              type="submit"
+              class="btn btn-light"
+              value="Envoyer"
+              id="submit"
+            />
+          </div>
+        </div>
+      </form>
+
+      <hr />
+      <h4>Liste des contacts</h4>
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date de naissance</th>
+            <th>Adresse</th>
+            <th>Mail</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="modal" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 id="modal-title" class="modal-title">Informations saisies</h5>
+            </div>
+            <div id="modal-body" class="modal-body">
+              <p id="modal-error-msg"></p>
+              <p id="modal-core-msg"></p>
+              <div id="error"></div>
+              <br />
+              <div id="resultat"></div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                id="btn-close"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function calcNbChar(id) {
+        document.querySelector(`#${id} + span`).textContent =
+          document.querySelector(`#${id}`).value.length;
+      }
+    </script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/gps.js"></script>
+    <script src="js/store.js"></script>
+  </body>
 </html>
+
