@@ -16,6 +16,7 @@ function getLocation() {
     document.querySelector("#map").innerHTML = `<img src='${img_url}'>`;
   }
   
+  
   // Au cas ou l'utilisateur refuse
   // Ou si une erreur arrive
   function showError(error) {

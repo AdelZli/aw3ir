@@ -139,4 +139,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         return re.test(String(mail).toLowerCase());
     }
 
-})
+}
+
+)
