@@ -1,0 +1,12 @@
+ol {
+    background: linear-gradient(141deg, #f0f3f3 0%, #eaeff0 51%, #e7ecec 75%);
+    color: rgb(80, 74, 74);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+
+    border-radius: 15px;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    text-align: center;
+    }
+

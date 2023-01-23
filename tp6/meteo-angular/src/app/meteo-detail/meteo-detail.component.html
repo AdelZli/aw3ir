@@ -1,0 +1,109 @@
+
+
+<!-- meteo de la ville selectionnée -->
+<!-- meteo de la ville selectionnée -->
+<div *ngIf="meteo && meteo.cod === 200">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/">🏠</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Météo pour {{meteo.name}}</li>
+      </ol>
+    </nav>
+  
+    <div class="card" style="width:300px; margin: 0 auto" v-if="meteo">
+      <div class="card-header">
+        {{meteo.name}} 🌤️ 
+      </div>
+      <img class="card-img-top" src="https://maps.googleapis.com/maps/api/staticmap?markers={{meteo.coord.lat}},{{meteo.coord.lon}}&zoom=5&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i v-bind:class="'wi wi-owm-day-'+meteo.weather[0].id"></i>
+          {{meteo.main.temp}}
+          <i class="wi wi-celsius"></i>
+        </h5>
+        <i class="card-text">{{meteo.weather[0].description}}</i>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <i class="wi wi-cloud"></i> Nuage : {{meteo.clouds.all}}%
+        </li>
+        <li class="list-group-item">
+          <i class="wi wi-humidity"></i> Humidité : {{meteo.main.humidity}}%
+        </li>
+        <li class="list-group-item">
+          <i class="wi wi-windy"></i> Vent : {{meteo.wind.speed}} km/h
+        </li>
+        <li class="list-group-item">
+          <i class="wi wi-sunrise"></i> Levé du soleil : {{meteo.sys.sunrise *1000 | date:'H:mm' }}
+        </li>
+        <li class="list-group-item">
+          <i class="wi wi-sunset"></i>Couché du soleil : {{meteo.sys.sunset *1000| date:'H:mm'}} 
+        </li>
+      </ul>
+    </div> 
+  </div>
+
+  <div class="alert alert-danger" *ngIf="meteo && meteo.cod !== 200">
+  
+    {{meteo.message}} (erreur {{meteo.cod}})
+  </div>
+  
+<body>
+<p>
+
+  <h5> Météo pour les prochains jours ❄️ : </h5>
+
+<div *ngIf="forecast && forecast.cod == '200'"  class="card-deck">
+	
+	<li class="card" *ngFor="let item of forecast.list; index as i; trackBy: trackByFn">
+		
+    <div class="card-header">
+	      {{item.name }}
+	  </div>
+
+		<div class="card-body">
+	      <h5 class="card-title">
+	        <i v-bind:class="'wi wi-owm-day-'+meteo.weather[0].id"></i>
+	        {{item.main.temp}}
+	        <i class="wi wi-celsius"></i>
+	      </h5>
+	      <i class="card-text">{{item.weather[0].description}}</i>
+	  </div>
+
+
+	    <ul class="list-group list-group-flush">
+	      <li class="list-group-item">
+	        <i class="wi wi-cloud"></i> Nuage: {{item.clouds.all}}%
+	      </li>
+	      <li class="list-group-item">
+	        <i class="wi wi-humidity"></i> Humidité: {{item.main.humidity}}%
+	      </li>
+	      <li class="list-group-item">
+	        <i class="wi wi-windy"></i> Vent: {{item.wind.speed}} km/h
+	      </li>
+        <li class="list-group-item">
+          <i class="wi wi-sunrise"></i> Levé du soleil : {{meteo.sys.sunrise *1000 | date:'H:mm' }}
+        </li>
+        <li class="list-group-item">
+          <i class="wi wi-sunset"></i> Couché du soleil : {{meteo.sys.sunset *1000| date:'H:mm'}} 
+        </li>
+      </ul>
+      
+    </li>
+</div>
+
+
+<div class="alert alert-danger" *ngIf="forecast && forecast.cod != '200'">
+	
+  {{forecast.message}} (erreur{{forecast.cod}})
+
+</div>
+  
+<p>
+
+</body>
+
